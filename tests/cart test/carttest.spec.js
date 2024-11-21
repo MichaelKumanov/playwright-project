@@ -14,9 +14,14 @@ test.describe.only("PositiveTest", () => {
       .locator('[data-test="add-to-cart-sauce-labs-bolt-t-shirt"]')
       .click();
     await page.locator('[data-test="shopping-cart-link"]').click();
+    await expect(page).toHaveURL("https://www.saucedemo.com/cart.html");
+    await expect(page.locator('[data-test="title"]')).toHaveText("Your Cart");
     await expect(page.locator('[data-test="shopping-cart-badge"]')).toHaveText(
       "2"
     );
+    const cart_list = page.locator('[data-test="cart-list"]');
+    const cart_items = cart_list.locator('//div[@class="cart_item"]');
+    await expect(cart_items).toHaveCount(2);
     await page.locator('[data-test="checkout"]').click();
     //await page.locator('[data-test="firstName"]').click();
     await page.locator('[data-test="firstName"]').fill("michael");
