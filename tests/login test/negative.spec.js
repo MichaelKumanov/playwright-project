@@ -94,9 +94,9 @@ test("test 7", async ({ page }) => {
   await page.goto("https://www.saucedemo.com/");
   await expect(page.getByText("Accepted usernames are:")).toBeVisible;
   await page.locator('[data-test="username"]').click();
-  await page.locator('[data-test="username"]').fill(" ");
+  await page.locator('[data-test="username"]').fill("");
   await page.locator('[data-test="password"]').click();
-  await page.locator('[data-test="password"]').fill(" ");
+  await page.locator('[data-test="password"]').fill("");
   await page.locator('[data-test="login-button"]').click();
   await expect(
     page.getByText(
