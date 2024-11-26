@@ -4,7 +4,7 @@ test.describe("PositiveTest", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("https://www.saucedemo.com/");
   });
-  test("correct login password 1", async ({ page }) => {
+  test("login standard_user", async ({ page }) => {
     await expect(page.getByText("Accepted usernames are:")).toBeVisible();
     await page.locator('[data-test="username"]').click();
     await page.locator('[data-test="username"]').type("standard_user");
@@ -13,7 +13,7 @@ test.describe("PositiveTest", () => {
     await page.locator('[data-test="login-button"]').click();
     await expect(page.getByText("Swag Labs")).toBeVisible();
   });
-  test("correct login password 2", async ({ page }) => {
+  test("login problem_user", async ({ page }) => {
     await expect(page.getByText("Accepted usernames are:")).toBeVisible();
     await page.locator('[data-test="username"]').click();
     await page.locator('[data-test="username"]').type("problem_user");
@@ -21,7 +21,7 @@ test.describe("PositiveTest", () => {
     await page.locator('[data-test="login-button"]').click();
     await expect(page.getByText("Swag Labs")).toBeVisible();
   });
-  test("correct login password 3", async ({ page }) => {
+  test("login performance_glitch_user", async ({ page }) => {
     await expect(page.getByText("Accepted usernames are:")).toBeVisible();
     await page.locator('[data-test="username"]').click();
     await page
@@ -31,7 +31,7 @@ test.describe("PositiveTest", () => {
     await page.locator('[data-test="login-button"]').click();
     await expect(page.getByText("Swag Labs")).toBeVisible();
   });
-  test("correct login password 5", async ({ page }) => {
+  test("login error_user", async ({ page }) => {
     await expect(page.getByText("Accepted usernames are:")).toBeVisible();
     await page.locator('[data-test="username"]').click();
     await page.locator('[data-test="username"]').type("error_user");
@@ -39,7 +39,7 @@ test.describe("PositiveTest", () => {
     await page.locator('[data-test="login-button"]').click();
     await expect(page.getByText("Swag Labs")).toBeVisible();
   });
-  test("correct login password 6", async ({ page }) => {
+  test("login visual_user", async ({ page }) => {
     await expect(page.getByText("Accepted usernames are:")).toBeVisible();
     await page.locator('[data-test="username"]').click();
     await page.locator('[data-test="username"]').type("visual_user");

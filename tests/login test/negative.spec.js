@@ -5,7 +5,7 @@ test.describe("Negative Suite", () => {
     await page.goto("https://www.saucedemo.com/");
   });
 
-  test("test", async ({ page }) => {
+  test("test1", async ({ page }) => {
     await expect(page.getByText("Accepted usernames are:")).toBeVisible();
     await page.locator('[data-test="username"]').click();
     await page.locator('[data-test="username"]').fill("locked_out_user");
@@ -14,11 +14,11 @@ test.describe("Negative Suite", () => {
     await page.locator('[data-test="login-button"]').click();
     await expect(
       page.getByText(
-        "Epic sadface: Username and password do not match any user in this service"
+        "Epic sadface: Sorry, this user has been locked out."
       )
     ).toBeVisible();
   });
- //username correct + password incorrect
+  //username correct + password correct
 
   test("test 2", async ({ page }) => {
     await expect(page.getByText("Accepted usernames are:")).toBeVisible();
@@ -105,12 +105,10 @@ test.describe("Negative Suite", () => {
     await page.locator('[data-test="password"]').click();
     await page.locator('[data-test="password"]').fill("");
     await page.locator('[data-test="login-button"]').click();
-    await expect(
-      page.getByText(
-        "Epic sadface: Username and password do not match any user in this service"
-      )
-    ).toBeVisible();
-    await page.pause;
+    await page.locator('[data-test="error"]').click();
+    await expect(page.locator('div').filter({ hasText: /^Epic sadface: Username is required$/ })).toHaveText(
+      "Epic sadface: Username is required"
+    );
   });
 });
 //username empty + password empty
