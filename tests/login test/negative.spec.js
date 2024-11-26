@@ -18,6 +18,7 @@ test.describe("Negative Suite", () => {
       )
     ).toBeVisible();
   });
+ //username correct + password incorrect
 
   test("test 2", async ({ page }) => {
     await expect(page.getByText("Accepted usernames are:")).toBeVisible();
@@ -32,6 +33,7 @@ test.describe("Negative Suite", () => {
       )
     ).toBeVisible();
   });
+  //username correct + password incorrect
 
   test("test 3", async ({ page }) => {
     await expect(page.getByText("Accepted usernames are:")).toBeVisible();
@@ -46,6 +48,7 @@ test.describe("Negative Suite", () => {
       )
     ).toBeVisible();
   });
+  //username incorrect + password correct
 
   test("test 4", async ({ page }) => {
     await expect(page.getByText("Accepted usernames are:")).toBeVisible();
@@ -60,6 +63,7 @@ test.describe("Negative Suite", () => {
       )
     ).toBeVisible();
   });
+  //username incorrect + password incorrect
 
   test("test 5", async ({ page }) => {
     await page.goto("https://www.saucedemo.com/");
@@ -75,6 +79,7 @@ test.describe("Negative Suite", () => {
       )
     ).toBeVisible();
   });
+  //username empty + password correct
 
   test("test 6", async ({ page }) => {
     await page.goto("https://www.saucedemo.com/");
@@ -90,6 +95,7 @@ test.describe("Negative Suite", () => {
       )
     ).toBeVisible();
   });
+  //username correct + password empty
 
   test("test 7", async ({ page }) => {
     await page.goto("https://www.saucedemo.com/");
@@ -107,3 +113,4 @@ test.describe("Negative Suite", () => {
     await page.pause;
   });
 });
+//username empty + password empty
