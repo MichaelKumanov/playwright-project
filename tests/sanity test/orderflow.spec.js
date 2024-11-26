@@ -21,13 +21,35 @@ test.describe("PositiveTest", () => {
     const cart_items = cart_list.locator('//div[@class="cart_item"]');
     await expect(cart_items).toHaveCount(2);
     await page.locator('[data-test="checkout"]').click();
+    await expect(page).toHaveURL(
+      "https://www.saucedemo.com/checkout-step-one.html"
+    );
+    await expect(page.locator('[data-test="secondary-header"]')).toHaveText(
+      "Checkout: Your Information"
+    );
     await page.locator('[data-test="firstName"]').fill("michael");
     await page.locator('[data-test="lastName"]').fill("kumanov");
     await page.locator('[data-test="postalCode"]').click();
     await page.locator('[data-test="postalCode"]').fill("356456");
     await page.locator('[data-test="continue"]').click();
+    await expect(page).toHaveURL(
+      "https://www.saucedemo.com/checkout-step-two.html"
+    );
+    await expect(page.locator('[data-test="secondary-header"]')).toHaveText(
+      "Checkout: Overview"
+    );
     await page.locator('[data-test="finish"]').click();
-    await page.locator('[data-test="complete-header"]').click();
-    await page.locator('[data-test="complete-text"]').click();
+    await expect(page).toHaveURL(
+      "https://www.saucedemo.com/checkout-complete.html"
+    );
+    await expect(page.locator('[data-test="secondary-header"]')).toHaveText(
+      "Checkout: Complete!"
+    );
+    await expect(page.locator('[data-test="complete-header"]')).toHaveText(
+      "Thank you for your order!"
+    );
+    await expect(page.locator('[data-test="complete-text"]')).toHaveText(
+      "Your order has been dispatched, and will arrive just as fast as the pony can get there!"
+    );
   });
 });
